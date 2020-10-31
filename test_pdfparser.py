@@ -6,7 +6,7 @@ import json
 class PDFParserTest(unittest.TestCase):
 
     def setUp(self) -> None:
-        self.parser = PDFParser("C:\Interview\input\Interview_sample_data.pdf", "output.json")
+        self.parser = PDFParser("input\interview_sample_data.pdf", "output.json")
 
 
     def test_validate_email(self):

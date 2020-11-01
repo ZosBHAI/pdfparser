@@ -125,17 +125,24 @@ class PDFParser(object):
 
 if __name__ == '__main__':
 
+
+
+    if len(sys.argv) != 5:
+        print("Input pdf and Output JSON  files should be given")
+        sys.exit()
+
     argParser = argparse.ArgumentParser(description='Extract the content from given PDF to JSON ')
-    argParser.add_argument('pdfpath', type=str, help='Input file path')
-    argParser.add_argument('jsonpath', type=str, help='Output file path')
+    argParser.add_argument('--input', type=str, help='Input file path' )
+    argParser.add_argument('--output', type=str, help='Output file path')
 
     args = argParser.parse_args()
-    input_file = args.pdfpath
-    output_file = args.jsonpath
+    input_file = args.input
+    output_file = args.output
 
     if not os.path.exists(input_file):
         print('Given PDF is not present in {}. Mention the correct location!!!!!'.format(input_file))
         sys.exit()
+
 
 
     #check the file format

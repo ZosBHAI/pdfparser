@@ -12,7 +12,7 @@
 
             RUNNING THE PROGRAM:
             --------------------
-            python PdfParser.py "C:\Interview\input\Interview_sample_data.pdf" "output.json"
+            python PdfParser.py  --input "C:\Interview\input\Interview_sample_data.pdf" --output output.json
 
             On successfull running, a JSON will be  created in the mention location. When the PDF does not
             adhere to the ASSUMPTION # 3 , JSON will  not be created.
@@ -108,8 +108,12 @@ class PDFParser(object):
 
     def  save_json(self):
         outputfile = self.outputFile
-        with open(outputfile, "w", encoding="utf-8") as  fp:
-            json.dump(self.keyvalue, fp, ensure_ascii=False)
+        try:
+
+            with open(outputfile, "w", encoding="utf-8") as  fp:
+                json.dump(self.keyvalue, fp, ensure_ascii=False)
+        except Exception as e:
+            print("Unable!!!!!!!!! to write to JSON due to {}".format(str(e)))
 
     def start_parsing(self):
 
